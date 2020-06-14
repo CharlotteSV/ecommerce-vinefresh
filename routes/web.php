@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Para ver la funcionalidad de la ruta es en app\Http\Controllers\PagesController
+
+//Encabezado
+Route::get('/encabezado', 'PagesController@encabezado')->name('encabezado');
