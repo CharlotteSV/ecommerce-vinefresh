@@ -9,6 +9,7 @@ class Sucursal extends Model
     //Definiciones básicas----------
     protected $table = 'tb_sucursal';
     protected $primaryKey = 'SUC_CODIGO';
+    public $timestamps = false;
     /*public $incrementing = false;
     protected $keyType = 'string';
     const CREATED_AT = 'creation_date';
@@ -32,5 +33,14 @@ class Sucursal extends Model
     public function pedidos()
     {
         return $this->hasMany('App\Pedido', 'SUC_CODIGO', 'PED_CODIGO');
+    }
+
+    /**
+     * OneToMany
+     * Recibir las zonas que pertenecen a la sucursal
+    */
+    public function zonas()
+    {
+        return $this->hasMany('App\Zona', 'SUC_CODIGO', 'ZON_CODIGO');
     }
 }

@@ -9,6 +9,7 @@ class FormatoMedida extends Model
     //Definiciones básicas---------- 
     protected $table = 'tb_formatomedida';
     protected $primaryKey = 'FOR_CODIGO';
+    public $timestamps = false;
     /*public $incrementing = false;
     protected $keyType = 'string';
     const CREATED_AT = 'creation_date';
