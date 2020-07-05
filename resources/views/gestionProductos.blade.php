@@ -11,11 +11,15 @@
         @endif
         
         <table class="table">
+            <div class="topnav" style="background-color:darkblue">
+                <a class= "btn btn-primary", href="formProducto">Crear Producto</a>
+            </div>
             <thead class="thead-dark">
               <tr>
                 <th scope="col">#id</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Precio</th>
+                <th scope="col">Opciones</th>
               </tr>
             </thead>
             <tbody>
@@ -24,6 +28,17 @@
                     <th scope="row">{{$item->PRO_CODIGO}}</th>
                     <td>{{$item->PRO_NOMBRE}}</td>
                     <td>{{$item->PRO_PRECIO}}</td>
+                    <td>
+                        <a class="btn btn-outline-warning btn-sm" href="{{ route('editarProducto', $item) }}">
+                            Editar
+                        </a>
+
+                        <form action="{{ route('deleteProducto', $item) }}" class="d-inline" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-outline-danger btn-sm" type="submit">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

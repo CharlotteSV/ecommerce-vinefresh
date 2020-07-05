@@ -22,5 +22,19 @@ Route::get('/', function () {
 //Encabezado
 Route::get('/encabezado', 'PagesController@encabezado')->name('encabezado');
 
-// MOSTRAR CATALOGO
+//------------------------------------------------CRUD PRODUCTOS------------------------------------------------
+// MOSTRAR PRODUCTOS
 Route::get('/gestionProductos', 'ProductoController@gestionProductos')->name('gestionProductos');
+
+// CREAR PRODUCTO
+Route::get('/formProducto', 'ProductoController@formProducto')->name('formProducto');
+
+Route::post('/gestionProductos', 'ProductoController@crearProducto')->name('crearProducto');
+
+// EDITAR PRODUCTO
+Route::get('/editarProducto{PRO_CODIGO}', 'ProductoController@editarProducto')->name('editarProducto');
+
+Route::put('/updateProducto{PRO_CODIGO}', 'ProductoController@update')->name('updateProducto');
+
+// ELIMINAR USUARIO
+Route::delete('/deleteProducto{PRO_CODIGO}', 'ProductoController@deleteProducto')->name('deleteProducto');
