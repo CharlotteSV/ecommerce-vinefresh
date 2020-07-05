@@ -21,3 +21,6 @@ Route::get('/', function () {
 
 //Encabezado
 Route::get('/encabezado', 'PagesController@encabezado')->name('encabezado');
+
+// MOSTRAR CATALOGO
+Route::get('/gestionProductos', 'ProductoController@gestionProductos')->name('gestionProductos');
