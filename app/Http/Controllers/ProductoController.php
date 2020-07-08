@@ -19,16 +19,18 @@ class ProductoController extends Controller
         $semestre = Semestre::find('ID del semestre');
         $nombre_seccion = $semestre->seccion->nombreseccion;
         */
-        
+        $sucursal = App\Sucursal::where('SUC_CODIGO', $SUC_CODIGO)->get();
         $productos = App\Producto::where('SUC_CODIGO', $SUC_CODIGO)->get();
-        return view('gestionProductos', compact('productos'), ['SUC_CODIGO' => $SUC_CODIGO]);        
+        return view('gestionProductos', compact('productos'), compact('SUC_CODIGO'));        
     }
 
     //-----------------------------------------------------------------------------
-    public function formProducto(){
+    public function formProducto($SUC_CODIGO){
 
-        // Mostrar formulario para crear usuario
-        return view('formProducto');
+        // Obtener datos de la BD de Formato Medida
+        $formatomedida = App\FormatoMedida::all();
+        // Mostrar formulario para crear producto
+        return view('formProducto', compact('formatomedida'), compact('SUC_CODIGO'));
     }
 
     //-----------------------------------------------------------------------------
@@ -37,7 +39,10 @@ class ProductoController extends Controller
 
         $request->validate([
             'nombre' => 'required',
-            'apellido' => 'required'
+            'formatomedida' => 'required',
+            'descripcion' => 'required',
+            'precio' => 'required',
+            'stock' => 'required'
         ]);
 
         // Crear Producto
@@ -46,7 +51,7 @@ class ProductoController extends Controller
         $newUser->apellido = $request->apellido;
 
         $newUser->save();
-        return back()->with('mensaje', 'Usuario Agregado');
+        return back()->with('mensaje', 'Producto Agregado');
     }
 
     //-----------------------------------------------------------------------------

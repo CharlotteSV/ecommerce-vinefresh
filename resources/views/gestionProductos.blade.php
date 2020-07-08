@@ -2,7 +2,7 @@
 
 @section('page')
     <div class="container my-4">
-        <h1 class="display-4">Gestión de Productos Sucursal {{$SUC_CODIGO ?? ''}}</h1>
+        <h1 class="display-4">Gestión de Productos Sucursal {{$SUC_CODIGO}}</h1>
 
         @if (session('mensaje'))
             <div class="alert alert-success">
@@ -12,11 +12,11 @@
         
         <table class="table">
             <div class="topnav" style="background-color:darkblue">
-                <a class= "btn btn-primary", href="formProducto">Crear Producto</a>
+                <a class= "btn btn-primary", href="{{ route('formProducto', $SUC_CODIGO) }}">Crear Producto</a>
             </div>
             <thead class="thead-dark">
               <tr>
-                <th scope="col">#id</th>
+                <th scope="col">#Código</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Opciones</th>

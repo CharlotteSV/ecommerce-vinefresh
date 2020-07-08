@@ -27,7 +27,7 @@ Route::get('/encabezado', 'PagesController@encabezado')->name('encabezado');
 Route::get('/gestionProductos{SUC_CODIGO}', 'ProductoController@gestionProductos')->name('gestionProductos');
 
 // CREAR PRODUCTO
-Route::get('/formProducto', 'ProductoController@formProducto')->name('formProducto');
+Route::get('/formProducto{SUC_CODIGO}', 'ProductoController@formProducto')->name('formProducto');
 
 Route::post('/gestionProductos', 'ProductoController@crearProducto')->name('crearProducto');
 
