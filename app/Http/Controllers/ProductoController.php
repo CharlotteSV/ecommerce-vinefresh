@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 class ProductoController extends Controller
 {
     //
-    public function gestionProductos(){
+    public function gestionProductos($SUC_CODIGO){
 
         // Obtener datos de la BD
         /*
@@ -19,8 +20,8 @@ class ProductoController extends Controller
         $nombre_seccion = $semestre->seccion->nombreseccion;
         */
         
-        $productos = App\Producto::where('SUC_CODIGO', 2)->get();
-        return view('gestionProductos', compact('productos'));        
+        $productos = App\Producto::where('SUC_CODIGO', $SUC_CODIGO)->get();
+        return view('gestionProductos', compact('productos'), ['SUC_CODIGO' => $SUC_CODIGO]);        
     }
 
     //-----------------------------------------------------------------------------
@@ -57,14 +58,14 @@ class ProductoController extends Controller
     }
 
     //-----------------------------------------------------------------------------
-    public function updateProducto(Request $request, $id){
+    public function updateProducto(Request $request, $PRO_CODIGO){
 
         $request->validate([
             'nombre' => 'required',
             'apellido' => 'required'
         ]);
         
-        $userUpdate = App\Usuario::findOrFail($id);
+        $userUpdate = App\Usuario::findOrFail($PRO_CODIGO);
         $userUpdate->nombre = $request->nombre;
         $userUpdate->apellido = $request->apellido;
 
@@ -73,11 +74,11 @@ class ProductoController extends Controller
     }
 
     //-----------------------------------------------------------------------------
-    public function deleteProducto($id){
+    public function deleteProducto($PRO_CODIGO){
         
-        $userDelete = App\Usuario::findOrFail($id);
+        $productoDelete = App\Producto::findOrFail($PRO_CODIGO);
         // Eliminar usuario seleccionado
-        $userDelete->delete();
-        return back()->with('mensaje', 'Usuario Eliminado');
+        $productoDelete->delete();
+        return back()->with('mensaje', 'Producto Eliminado');
     }
 }

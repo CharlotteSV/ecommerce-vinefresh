@@ -24,7 +24,7 @@ Route::get('/encabezado', 'PagesController@encabezado')->name('encabezado');
 
 //------------------------------------------------CRUD PRODUCTOS------------------------------------------------
 // MOSTRAR PRODUCTOS
-Route::get('/gestionProductos', 'ProductoController@gestionProductos')->name('gestionProductos');
+Route::get('/gestionProductos{SUC_CODIGO}', 'ProductoController@gestionProductos')->name('gestionProductos');
 
 // CREAR PRODUCTO
 Route::get('/formProducto', 'ProductoController@formProducto')->name('formProducto');

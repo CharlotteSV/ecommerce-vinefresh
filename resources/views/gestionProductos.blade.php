@@ -2,7 +2,7 @@
 
 @section('page')
     <div class="container my-4">
-        <h1 class="display-4">Gestión de Productos</h1>
+        <h1 class="display-4">Gestión de Productos Sucursal {{$SUC_CODIGO ?? ''}}</h1>
 
         @if (session('mensaje'))
             <div class="alert alert-success">
