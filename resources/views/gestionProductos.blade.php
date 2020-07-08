@@ -29,7 +29,7 @@
                     <td>{{$item->PRO_NOMBRE}}</td>
                     <td>{{$item->PRO_PRECIO}}</td>
                     <td>
-                        <a class="btn btn-outline-warning btn-sm" href="{{ route('editarProducto', $item) }}">
+                        <a class="btn btn-outline-warning btn-sm" href="{{ route('editarProducto', $item->PRO_CODIGO) }}">
                             Editar
                         </a>
 

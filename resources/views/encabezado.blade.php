@@ -12,7 +12,7 @@
     </head>
     <body>
         <div class="topnav" style="background-color:darkblue">
-            <a class= "btn btn-primary", href="gestionProductos">Gestión de Productos</a>
+            <a class= "btn btn-primary", href="{{ route('gestionProductos', $SUC_CODIGO) }}">Gestión de Productos</a>
             {{-- <a class= "btn btn-primary", href="form">Crear Usuario</a> --}}
             {{-- <a class= "btn btn-primary", href="update">Actualizar</a> --}}
             {{-- <a class= "btn btn-primary", href="delete">Eliminar</a> --}}

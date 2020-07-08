@@ -59,27 +59,66 @@
 <!-- FIN VARIABLES OBLIGATORIAS -->        
 
 <!-- ESTRUCTURA FORMULARIO -->
-        <label for="nombre">Nombre del producto</label>
-        <input type="text" name="nombre" id="nombre" placeholder="Nombre Producto" class="form-control mb-2" value="{{ old('nombre') }}">
+        <input
+        type="hidden"
+        name="sucursal"
+        id="sucursal"
+        class="form-control mb-2"
+        value="{{ $SUC_CODIGO }}">
         <br>
+
+        <label for="nombre">Nombre del producto</label>
+        <input
+        type="text"
+        name="nombre"
+        id="nombre"
+        placeholder="Nombre Producto"
+        class="form-control mb-2"
+        value="{{ old('nombre') }}">
+        <br>
+<!-- COMBOBOX -->
         <label for="formatomedida">Formato de medida del producto</label>
         <div class="col-sm-9">
             <select name="formatomedida" class="form-control mb-2">
             <option></option>
                @foreach($formatomedida as $item) 
-                    <option value="{{ $item->FOR_DESCRIPCION }}"> {{ $item->FOR_DESCRIPCION }} </option> 
+                    <option value="{{ $item->FOR_CODIGO }}"> {{ $item->FOR_DESCRIPCION }} </option> 
                @endforeach
            </select>
-        <br>
+           <br>
+<!-- FIN COMBOBOX -->
         <label for="descripcion">Descripción del producto</label>
-        <input type="text" name="descripcion" id="descripcion" placeholder="Descripción" class="form-control mb-2" value="{{ old('descripcion') }}">
+        <input
+        type="text"
+        name="descripcion"
+        id="descripcion"
+        placeholder="Descripción"
+        class="form-control mb-2"
+        value="{{ old('descripcion') }}">
         <br>
+
         <label for="precio">Precio producto</label>
-        <input type="number" maxlength="8" name="precio" id="precio" placeholder="Precio" class="form-control mb-2" value="{{ old('precio') }}">
+        <input
+        type="number"
+        maxlength="8"
+        name="precio"
+        id="precio"
+        placeholder="Precio"
+        class="form-control mb-2"
+        value="{{ old('precio') }}">
         <br>
+
         <label for="stock">Stock producto</label>
-        <input type="number" maxlength="8" name="stock" id="stock" placeholder="Stock" class="form-control mb-2" value="{{ old('stock') }}">
+        <input
+        type="number"
+        maxlength="8"
+        name="stock"
+        id="stock"
+        placeholder="Stock"
+        class="form-control mb-2"
+        value="{{ old('stock') }}">
         <br>
+        
         <button class="btn btn-outline-primary btn-block" type="submit">Agregar</button>
     </form>
 @endsection

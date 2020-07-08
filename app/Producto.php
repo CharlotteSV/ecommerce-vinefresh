@@ -11,8 +11,8 @@ class Producto extends Model
     protected $primaryKey = 'PRO_CODIGO';
     //public $incrementing = false;
     //protected $keyType = 'string';
-    //const CREATED_AT = 'creation_date';
-    //const UPDATED_AT = 'last_update';
+    const CREATED_AT = 'PRO_CREATED_AT';
+    const UPDATED_AT = 'PRO_UPDATED_AT';
 
     //Definición de relaciones----------
     /**
