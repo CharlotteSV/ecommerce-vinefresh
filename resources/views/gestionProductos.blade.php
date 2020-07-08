@@ -19,6 +19,7 @@
                 <th scope="col">#Código</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Precio</th>
+                <th scope="col">Stock</th>
                 <th scope="col">Opciones</th>
               </tr>
             </thead>
@@ -28,8 +29,9 @@
                     <th scope="row">{{$item->PRO_CODIGO}}</th>
                     <td>{{$item->PRO_NOMBRE}}</td>
                     <td>{{$item->PRO_PRECIO}}</td>
+                    <td>{{$item->PRO_STOCK}}</td>
                     <td>
-                        <a class="btn btn-outline-warning btn-sm" href="{{ route('editarProducto', $item->PRO_CODIGO) }}">
+                        <a class="btn btn-outline-warning btn-sm" href="{{ route('editarProducto', $item) }}">
                             Editar
                         </a>
 

@@ -2,7 +2,7 @@
 
 @section('page')
     <h1 class="display-4">Editar Producto {{ $productoUpdate->PRO_CODIGO }}</h1>
-
+    <input type="hidden" value="{{$SUC_CODIGO=$productoUpdate->SUC_CODIGO}}">
     @if (session('mensaje'))
         <div class="alert alert-success">
             {{ session('mensaje') }}
@@ -84,7 +84,7 @@
             <select name="formatomedida" class="form-control mb-2">
             <option></option>
                @foreach($formatomedida as $item) 
-                    <option value="{{ $formatomedida->FOR_CODIGO }}"> {{ $item->FOR_DESCRIPCION }} </option> 
+                    <option value="{{ $item->FOR_CODIGO }}"> {{ $item->FOR_DESCRIPCION }} </option> 
                @endforeach
            </select>
            <br>

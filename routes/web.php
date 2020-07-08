@@ -34,7 +34,7 @@ Route::post('/gestionProductos', 'ProductoController@crearProducto')->name('crea
 // EDITAR PRODUCTO
 Route::get('/editarProducto{PRO_CODIGO}', 'ProductoController@editarProducto')->name('editarProducto');
 
-Route::put('/updateProducto{PRO_CODIGO}', 'ProductoController@update')->name('updateProducto');
+Route::put('/updateProducto{PRO_CODIGO}', 'ProductoController@updateProducto')->name('updateProducto');
 
 // ELIMINAR USUARIO
 Route::delete('/deleteProducto{PRO_CODIGO}', 'ProductoController@deleteProducto')->name('deleteProducto');

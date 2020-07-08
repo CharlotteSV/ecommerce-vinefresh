@@ -66,9 +66,9 @@ class ProductoController extends Controller
         // Obtener datos de la BD de Formato Medida
         $formatomedida = App\FormatoMedida::all();
         $productoUpdate = App\Producto::findOrFail($PRO_CODIGO);
-        $SUC_CODIGO = $productoUpdate->SUC_CODIGO;
+        //$SUC_CODIGO = $productoUpdate->SUC_CODIGO;
         // Obtener dato del PRODUCTO seleccionado y modificar
-        return view('editarProducto', compact('formatomedida'), compact('SUC_CODIGO'), compact('productoUpdate'));
+        return view('editarProducto', compact('formatomedida'), /*compact('SUC_CODIGO'), */compact('productoUpdate'));
     }
 
     //-----------------------------------------------------------------------------
@@ -83,15 +83,15 @@ class ProductoController extends Controller
             'stock' => 'required'
         ]);
         
-        $updateProducto = App\Producto::findOrFail($PRO_CODIGO);
-        $updateProducto->SUC_CODIGO = $request->sucursal;
-        $updateProducto->PRO_NOMBRE = $request->nombre;
-        $updateProducto->FOR_CODIGO = $request->formatomedida;
-        $updateProducto->PRO_DESCRIPCION = $request->descripcion;
-        $updateProducto->PRO_PRECIO = $request->precio;
-        $updateProducto->PRO_STOCK = $request->stock;
+        $productoUpdate = App\Producto::findOrFail($PRO_CODIGO);
+        $productoUpdate->SUC_CODIGO = $request->sucursal;
+        $productoUpdate->PRO_NOMBRE = $request->nombre;
+        $productoUpdate->FOR_CODIGO = $request->formatomedida;
+        $productoUpdate->PRO_DESCRIPCION = $request->descripcion;
+        $productoUpdate->PRO_PRECIO = $request->precio;
+        $productoUpdate->PRO_STOCK = $request->stock;
 
-        $updateProducto->save();
+        $productoUpdate->save();
         return back()->with('mensaje', 'Producto Editado');
     }
 
