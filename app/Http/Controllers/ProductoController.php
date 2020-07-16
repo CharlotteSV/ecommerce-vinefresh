@@ -21,7 +21,7 @@ class ProductoController extends Controller
         $nombre_seccion = $semestre->seccion->nombreseccion;
         */
         $sucursal = App\Sucursal::where('SUC_CODIGO', $SUC_CODIGO)->get();
-        $productos = App\Producto::where('SUC_CODIGO', $SUC_CODIGO)->get();
+        $productos = App\Producto::where('SUC_CODIGO', $SUC_CODIGO)->orderBy('PRO_CODIGO', 'DESC')->paginate(10);
         return view('gestionProductos', compact('productos'), compact('SUC_CODIGO'));        
     }
 
@@ -41,8 +41,8 @@ class ProductoController extends Controller
         $request->validate([
             'sucursal' => 'required',
             'nombre' => 'required',
-            'formatomedida' => 'required',
             'descripcion' => 'required',
+            'formatomedida' => 'required',
             'precio' => 'required',
             'stock' => 'required'
         ]);
@@ -51,8 +51,8 @@ class ProductoController extends Controller
         $newProducto = new App\Producto;
         $newProducto->SUC_CODIGO = $request->sucursal;
         $newProducto->PRO_NOMBRE = $request->nombre;
-        $newProducto->FOR_CODIGO = $request->formatomedida;
         $newProducto->PRO_DESCRIPCION = $request->descripcion;
+        $newProducto->FOR_CODIGO = $request->formatomedida;
         $newProducto->PRO_PRECIO = $request->precio;
         $newProducto->PRO_STOCK = $request->stock;
 
@@ -77,8 +77,8 @@ class ProductoController extends Controller
         $request->validate([
             'sucursal' => 'required',
             'nombre' => 'required',
-            'formatomedida' => 'required',
             'descripcion' => 'required',
+            'formatomedida' => 'required',
             'precio' => 'required',
             'stock' => 'required'
         ]);
@@ -86,8 +86,8 @@ class ProductoController extends Controller
         $productoUpdate = App\Producto::findOrFail($PRO_CODIGO);
         $productoUpdate->SUC_CODIGO = $request->sucursal;
         $productoUpdate->PRO_NOMBRE = $request->nombre;
-        $productoUpdate->FOR_CODIGO = $request->formatomedida;
         $productoUpdate->PRO_DESCRIPCION = $request->descripcion;
+        $productoUpdate->FOR_CODIGO = $request->formatomedida;
         $productoUpdate->PRO_PRECIO = $request->precio;
         $productoUpdate->PRO_STOCK = $request->stock;
 

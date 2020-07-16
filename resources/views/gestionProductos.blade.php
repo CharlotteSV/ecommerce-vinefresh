@@ -10,14 +10,16 @@
             </div>
         @endif
         
-        <table class="table">
+        <table class="table table-bordered table-hover">
             <div class="topnav" style="background-color:darkblue">
-                <a class= "btn btn-primary", href="{{ route('formProducto', $SUC_CODIGO) }}">Crear Producto</a>
+                <a class= "btn btn-primary", href="{{ route('formProducto', $SUC_CODIGO) }}">Nuevo Producto</a>
+                <a class= "btn btn-primary", href="{{ route('formProducto', $SUC_CODIGO) }}">Nuevo Producto</a>
             </div>
             <thead class="thead-dark">
               <tr>
                 <th scope="col">#Código</th>
                 <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Stock</th>
                 <th scope="col">Opciones</th>
@@ -28,10 +30,11 @@
                 <tr>
                     <th scope="row">{{$item->PRO_CODIGO}}</th>
                     <td>{{$item->PRO_NOMBRE}}</td>
+                    <td>{{$item->PRO_DESCRIPCION}}</td>
                     <td>{{$item->PRO_PRECIO}}</td>
                     <td>{{$item->PRO_STOCK}}</td>
-                    <td>
-                        <a class="btn btn-outline-warning btn-sm" href="{{ route('editarProducto', $item) }}">
+                    <td style="text-align:right">
+                        <a class="btn btn-outline-warning btn-sm"  href="{{ route('editarProducto', $item) }}">
                             Editar
                         </a>
 
@@ -44,6 +47,7 @@
                 </tr>
                 @endforeach
             </tbody>
-          </table>
+        </table>
+        {{$productos->links()}}
     </div>
 @endsection
