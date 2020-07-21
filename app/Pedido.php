@@ -10,10 +10,10 @@ class Pedido extends Model
     protected $table = 'tb_pedido';
     protected $primaryKey = 'PED_CODIGO';
     /*public $incrementing = false;
-    protected $keyType = 'string';
-    const CREATED_AT = 'creation_date';
-    const UPDATED_AT = 'last_update';
-    */
+    protected $keyType = 'string';*/    
+    const CREATED_AT = 'PED_CREATED_AT';
+    const UPDATED_AT = 'PED_UPDATED_AT';
+    
 
     //Definición de relaciones----------
     /**
@@ -41,5 +41,23 @@ class Pedido extends Model
     public function user()
     {
         return $this->belongsTo('App\User', 'USE_CODIGO', 'PED_CODIGO');
+    }
+
+    /**
+     * OneToMany
+     * Recibir el contenido del pedido
+    */
+    public function contenidoPedidos()
+    {
+        return $this->hasMany('App\ContenidoPedido', 'PED_CODIGO', 'CON_CODIGO');
+    }
+
+    //Definición de funciones SCOPE----------
+
+    public function scopeBuscarpor($query, $tipo, $buscar){
+
+        if( ($tipo) && ($buscar) ){
+            return $query->where($tipo, 'like', "%$buscar%");
+        }
     }
 }

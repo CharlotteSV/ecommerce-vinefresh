@@ -8,7 +8,7 @@ class PagesController extends Controller
 {
     //Todas las rutas de routes\web.php
 
-    public function encabezado(){
-        return view('encabezado');
+    public function encabezadoadmin(){
+        return view('encabezadoadmin');
     }
 }

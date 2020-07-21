@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use APP\Http\Controllers\Redirect;
 use App;
+use GuzzleHttp\Psr7\Request as Psr7Request;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 class ProductoController extends Controller
 {
     //
-    public function gestionProductos($SUC_CODIGO){
+    public function gestionProductos($SUC_CODIGO, Request $request){
 
         // Obtener datos de la BD
         /*
@@ -20,8 +21,10 @@ class ProductoController extends Controller
         $semestre = Semestre::find('ID del semestre');
         $nombre_seccion = $semestre->seccion->nombreseccion;
         */
+        $buscar = $request->get('buscarpor');
+        $tipo = $request->get('tipo');
         $sucursal = App\Sucursal::where('SUC_CODIGO', $SUC_CODIGO)->get();
-        $productos = App\Producto::where('SUC_CODIGO', $SUC_CODIGO)->orderBy('PRO_CODIGO', 'DESC')->paginate(10);
+        $productos = App\Producto::where('SUC_CODIGO', $SUC_CODIGO)->buscarpor($tipo, $buscar)->orderBy('PRO_NOMBRE', 'ASC')->paginate(10);
         return view('gestionProductos', compact('productos'), compact('SUC_CODIGO'));        
     }
 
@@ -58,6 +61,17 @@ class ProductoController extends Controller
 
         $newProducto->save();
         return back()->with('mensaje', 'Producto Agregado');
+    }
+
+    //-----------------------------------------------------------------------------
+    public function verProducto($PRO_CODIGO){
+
+        $verProducto = App\Producto::findOrFail($PRO_CODIGO);
+        // Obtener datos de la BD de Formato Medida
+        $formatomedida = App\FormatoMedida::findOrFail($verProducto->FOR_CODIGO);
+        //$SUC_CODIGO = $productoUpdate->SUC_CODIGO;
+        // Obtener dato del PRODUCTO seleccionado y modificar
+        return view('verProducto', compact('formatomedida'), /*compact('SUC_CODIGO'), */compact('verProducto'));
     }
 
     //-----------------------------------------------------------------------------

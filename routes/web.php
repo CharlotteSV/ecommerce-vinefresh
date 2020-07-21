@@ -31,10 +31,29 @@ Route::get('/formProducto{SUC_CODIGO}', 'ProductoController@formProducto')->name
 
 Route::post('/gestionProductos', 'ProductoController@crearProducto')->name('crearProducto');
 
+// VER PRODUCTO
+Route::get('/verProducto{PRO_CODIGO}', 'ProductoController@verProducto')->name('verProducto');
+
 // EDITAR PRODUCTO
 Route::get('/editarProducto{PRO_CODIGO}', 'ProductoController@editarProducto')->name('editarProducto');
 
 Route::put('/updateProducto{PRO_CODIGO}', 'ProductoController@updateProducto')->name('updateProducto');
 
-// ELIMINAR USUARIO
+// ELIMINAR PRODUCTO
 Route::delete('/deleteProducto{PRO_CODIGO}', 'ProductoController@deleteProducto')->name('deleteProducto');
+
+
+//------------------------------------------------CRUD PEDIDOS------------------------------------------------
+// MOSTRAR PEDIDOS
+Route::get('/gestionPedidos{SUC_CODIGO}', 'PedidoController@gestionPedidos')->name('gestionPedidos');
+
+// VER PEDIDO
+Route::get('/verPedido{PED_CODIGO}', 'PedidoController@verPedido')->name('verPedido');
+
+// EDITAR PEDIDO
+Route::get('/editarPedido{PED_CODIGO}', 'PedidoController@editarPedido')->name('editarPedido');
+
+Route::put('/updatePedido{PED_CODIGO}', 'PedidoController@updatePedido')->name('updatePedido');
+
+// ELIMINAR PEDIDO
+Route::delete('/deletePedido{PED_CODIGO}', 'PedidoController@deletePedido')->name('deletePedido');

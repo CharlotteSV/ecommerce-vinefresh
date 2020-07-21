@@ -32,4 +32,13 @@ class Producto extends Model
     {
         return $this->belongsTo('App\FormatoMedida', 'FOR_CODIGO', 'PRO_CODIGO');
     }
+
+    //Definición de funciones SCOPE----------
+
+    public function scopeBuscarpor($query, $tipo, $buscar){
+
+        if( ($tipo) && ($buscar) ){
+            return $query->where($tipo, 'like', "%$buscar%");
+        }
+    }
 }

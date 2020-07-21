@@ -1,4 +1,4 @@
-@extends('encabezado')
+@extends('encabezadoadmin')
 
 @section('page')
     <div class="card" style="margin: 50px">
