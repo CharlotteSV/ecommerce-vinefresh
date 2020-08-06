@@ -33,6 +33,15 @@ class Producto extends Model
         return $this->belongsTo('App\FormatoMedida', 'FOR_CODIGO', 'PRO_CODIGO');
     }
 
+    /**
+     * OneToMany
+     * Recibir todos los contenido a los cuales pertenece el producto
+    */
+    public function contenidoPedidos()
+    {
+        return $this->hasMany('App\ContenidoPedido', 'PRO_CODIGO', 'CON_CODIGO');
+    }
+
     //Definición de funciones SCOPE----------
 
     public function scopeBuscarpor($query, $tipo, $buscar){

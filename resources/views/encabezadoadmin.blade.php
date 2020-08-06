@@ -12,6 +12,7 @@
     </head>
     <body>
         <div class="topnav" style="background-color:darkblue">
+            <a class= "btn btn-primary", href="{{ route('gestionCuentas', $SUC_CODIGO) }}">Gestión de Cuentas</a>
             <a class= "btn btn-primary", href="{{ route('gestionProductos', $SUC_CODIGO) }}">Gestión de Productos</a>
             <a class= "btn btn-primary", href="{{ route('gestionPedidos', $SUC_CODIGO) }}">Gestión de Pedidos</a>
             {{-- <a class= "btn btn-primary", href="form">Crear Usuario</a> --}}

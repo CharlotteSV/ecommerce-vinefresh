@@ -47,18 +47,25 @@ class PedidoController extends Controller
     public function deletePedido($PED_CODIGO){
         
         $pedidoDelete = App\Pedido::findOrFail($PED_CODIGO);
-        $contenidopedidoDelete = App\ContenidoPedido::where('PED_CODIGO', $pedidoDelete->PED_CODIGO);
+        $PED_CODIGO = $pedidoDelete->PED_CODIGO;
+        $contenidoDelete = App\ContenidoPedido::where('PED_CODIGO', $PED_CODIGO)->get();
 
-        //Sumar la cantidad de los productos del contenido del pedido al stock del producto en sucursal
-        foreach($contenidopedidoDelete as $contenido){
-            $producto = App\Producto::findOrFail('PRO_CODIGO', $contenido->PRO_CODIGO);
+        foreach($contenidoDelete as $contenido) {
+
+            //Cantidad del producto en el carrito
             $cantidad = $contenido->CON_CANTIDAD;
+
+            //Busca el producto del carrito
+            $producto = App\Producto::findOrFail($contenido->PRO_CODIGO);
+
+            //Se le suma al producto en sucursal la cantidad del pedido
             $producto->PRO_STOCK += $cantidad;
+            //dd($producto);
             $producto->save();
+            $contenido->delete();
         }
-        
+
         // Eliminar pedido seleccionado
-        $contenidopedidoDelete->delete();
         $pedidoDelete->delete();
         return back()->with('mensaje', 'Pedido Eliminado');
     }

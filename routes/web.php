@@ -22,6 +22,7 @@ Route::get('/', function () {
 //Encabezado
 Route::get('/encabezado', 'PagesController@encabezado')->name('encabezado');
 
+
 //------------------------------------------------CRUD PRODUCTOS------------------------------------------------
 // MOSTRAR PRODUCTOS
 Route::get('/gestionProductos{SUC_CODIGO}', 'ProductoController@gestionProductos')->name('gestionProductos');
@@ -57,3 +58,8 @@ Route::put('/updatePedido{PED_CODIGO}', 'PedidoController@updatePedido')->name('
 
 // ELIMINAR PEDIDO
 Route::delete('/deletePedido{PED_CODIGO}', 'PedidoController@deletePedido')->name('deletePedido');
+
+
+//------------------------------------------------CRUD CUENTAS------------------------------------------------
+// MOSTRAR CUENTAS
+Route::get('/gestionCuentas{SUC_CODIGO}', 'CuentaController@gestionCuentas')->name('gestionCuentas');

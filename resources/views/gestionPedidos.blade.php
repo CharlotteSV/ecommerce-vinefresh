@@ -35,7 +35,11 @@
             </thead>
             <tbody>
                 @foreach ($pedidos ?? '' as $item)
-                <tr>
+                @if ($item->PED_ESTADO == "activo")
+                    <tr style="background-color: rgba(37, 175, 255, 0.164)">                   
+                @else
+                    <tr>
+                @endif
                     <th scope="row">{{$item->PED_CODIGO}}</th>
                     <td>{{$item->PED_EMAIL}}</td>
                     <td>{{$item->PED_ESTADO}}</td>

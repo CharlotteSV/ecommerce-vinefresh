@@ -80,6 +80,7 @@ class ProductoController extends Controller
         // Obtener datos de la BD de Formato Medida
         $formatomedida = App\FormatoMedida::all();
         $productoUpdate = App\Producto::findOrFail($PRO_CODIGO);
+        //dd($productoUpdate);
         //$SUC_CODIGO = $productoUpdate->SUC_CODIGO;
         // Obtener dato del PRODUCTO seleccionado y modificar
         return view('editarProducto', compact('formatomedida'), /*compact('SUC_CODIGO'), */compact('productoUpdate'));
