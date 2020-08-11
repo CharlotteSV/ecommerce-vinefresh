@@ -19,8 +19,18 @@ Route::get('/', function () {
 
 //Para ver la funcionalidad de la ruta es en app\Http\Controllers\PagesController
 
-//Encabezado
-Route::get('/encabezado', 'PagesController@encabezado')->name('encabezado');
+//Encabezado Sucursal
+Route::get('/encabezadosucursal', 'PagesController@encabezadosucursal')->name('encabezadosucursal');
+
+//Encabezado Admin
+Route::get('/encabezadoadmin', 'PagesController@encabezadoadmin')->name('encabezadoadmin');
+
+//------------------------------------------------SUCURSAL------------------------------------------------
+// SELECCIONAR SUCURSAL
+Route::get('/seleccionarsucursal', 'SucursalController@seleccionarsucursal')->name('seleccionarsucursal');
+
+// VER SUCURSAL
+Route::get('/verSucursal{SUC_CODIGO}', 'SucursalController@verSucursal')->name('verSucursal');
 
 
 //------------------------------------------------CRUD PRODUCTOS------------------------------------------------

@@ -12,12 +12,11 @@
     </head>
     <body>
         <div class="topnav" style="background-color:darkblue">
-            <a class= "btn btn-primary", href="{{ route('gestionCuentas', $SUC_CODIGO) }}">Gestión de Cuentas</a>
-            <a class= "btn btn-primary", href="{{ route('gestionProductos', $SUC_CODIGO) }}">Gestión de Productos</a>
-            <a class= "btn btn-primary", href="{{ route('gestionPedidos', $SUC_CODIGO) }}">Gestión de Pedidos</a>
-            {{-- <a class= "btn btn-primary", href="form">Crear Usuario</a> --}}
-            {{-- <a class= "btn btn-primary", href="update">Actualizar</a> --}}
-            {{-- <a class= "btn btn-primary", href="delete">Eliminar</a> --}}
+            <a class= "btn btn-primary m-1", href="{{ route('seleccionarsucursal') }}">Atrás</a>
+            <a class= "btn btn-primary m-1", href="{{ route('verSucursal', $SUC_CODIGO) }}">Sucursal</a>
+            <a class= "btn btn-primary m-1", href="{{ route('gestionCuentas', $SUC_CODIGO) }}">Gestión de Cuentas</a>
+            <a class= "btn btn-primary m-1", href="{{ route('gestionProductos', $SUC_CODIGO) }}">Gestión de Productos</a>
+            <a class= "btn btn-primary m-1", href="{{ route('gestionPedidos', $SUC_CODIGO) }}">Gestión de Pedidos</a>
         </div>
         <div class="container">
             @yield('page')
